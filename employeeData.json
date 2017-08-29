@@ -1,0 +1,32 @@
+{
+    "employees": [
+        {
+            "id" : 0, 
+            "firstName" : "Fred", 
+            "lastName" : "Smith", 
+            "jobTitle" : "Cashier", 
+            "address" : "500 Somewhere Lane"
+        },
+        {
+            "id" : 1, 
+            "firstName" : "Fredrica", 
+            "lastName" : "Smithson", 
+            "jobTitle" : "Bookseller", 
+            "address" : "1500 esme st"
+        },
+        {
+            "id" : 2, 
+            "firstName" : "Emma", 
+            "lastName" : "Potter", 
+            "jobTitle" : "Barista", 
+            "address" : "Middle of nowhere"
+        },
+        {
+            "id" : 3, 
+            "firstName" : "Frank", 
+            "lastName" : "Stine", 
+            "jobTitle" : "Manager", 
+            "address" : "2500 acme block"
+        }
+    ]
+}
