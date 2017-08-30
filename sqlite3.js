@@ -14,7 +14,7 @@ const deleteTable = () => {
 }
 
 const createTable = () => {
-    db.run('CREATE TABLE IF NOT EXISTS employees (id INT, firstName TEXT, lastName TEXT, jobTitle TEXT, address TEXT)', () => {
+    db.run('CREATE TABLE IF NOT EXISTS employees (id INT, firstName TEXT, lastName TEXT, jobTitle TEXT, salary INT, address TEXT)', () => {
         populateData();
     });
 }
@@ -27,10 +27,12 @@ const populateData = () => {
             "${employee.firstName}",
             "${employee.lastName}",
             "${employee.jobTitle}",
+            ${employee.salary},
             "${employee.address}")`)
        });
     // getAllData();
-    getJobTitles();
+    // getJobTitles();
+    getSpecificTitle();
 }
 
 // Write a statement to query the database and console.log() all employee records.
@@ -55,11 +57,19 @@ const populateData = () => {
 
 // Write a statement to query the database and console.log() each employees firstName, lastName and address only.
 
-const getJobTitles = () => {
-    db.each('SELECT firstName, lastName, address FROM employees', (err, data) => {
-        if(err)
-            console.log('errorr', err.toString());
-        console.log(data);
+// const getJobTitles = () => {
+//     db.each('SELECT firstName, lastName, address FROM employees', (err, data) => {
+//         if(err)
+//             console.log('errorr', err.toString());
+//         console.log(data);
+//     })
+// }
+
+const getSpecificTitle = () => {
+    db.get('select * from employees where jobTitle = "Manager"', (err, data) => {
+        if(err) 
+            console.log(err.toString());
+        console.log("Manager:", data)
     })
 }
 deleteTable();

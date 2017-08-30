@@ -5,6 +5,7 @@
             "firstName" : "Fred", 
             "lastName" : "Smith", 
             "jobTitle" : "Cashier", 
+            "salary" : 45000,
             "address" : "500 Somewhere Lane"
         },
         {
@@ -12,6 +13,7 @@
             "firstName" : "Fredrica", 
             "lastName" : "Smithson", 
             "jobTitle" : "Bookseller", 
+            "salary" : 55000,
             "address" : "1500 esme st"
         },
         {
@@ -19,6 +21,7 @@
             "firstName" : "Emma", 
             "lastName" : "Potter", 
             "jobTitle" : "Barista", 
+            "salary" : 65000,
             "address" : "Middle of nowhere"
         },
         {
@@ -26,6 +29,7 @@
             "firstName" : "Frank", 
             "lastName" : "Stine", 
             "jobTitle" : "Manager", 
+            "salary" : 75000,
             "address" : "2500 acme block"
         }
     ]
