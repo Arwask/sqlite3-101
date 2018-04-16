@@ -1,39 +1,40 @@
 'use strict';
 
-const sqlite3  = require('sqlite3').verbose();
-const db = new sqlite3.Database('employeeData.sqlite', (err) => {
-    if(err)
-        console.log("Err:", err.toString());
-    console.log("Connected");
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('employeeData.sqlite', err => {
+  if (err) console.log('Err:', err.toString());
+  console.log('Connected');
 });
 
-
 const deleteTable = () => {
-    db.run('DROP TABLE IF EXISTS employees');
-    createTable();
-}
+  db.run('DROP TABLE IF EXISTS employees');
+  createTable();
+};
 
 const createTable = () => {
-    db.run('CREATE TABLE IF NOT EXISTS employees (id INT, firstName TEXT, lastName TEXT, jobTitle TEXT, salary INT, address TEXT)', () => {
-        populateData();
-    });
-}
+  db.run(
+    'CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, firstName TEXT, lastName TEXT, jobTitle TEXT, salary INT, address TEXT)',
+    () => {
+      populateData();
+    }
+  );
+};
 
 const populateData = () => {
-    const { employees } = require('./employeeData.json');
-    employees.forEach( (employee) => {
-        db.run(`INSERT INTO employees VALUES(
+  const { employees } = require('./employeeData.json');
+  employees.forEach(employee => {
+    db.run(`INSERT INTO employees(id, firstNAme, lastName, jobTitle, salary, address) VALUES(
             ${employee.id},
             "${employee.firstName}",
             "${employee.lastName}",
             "${employee.jobTitle}",
             ${employee.salary},
-            "${employee.address}")`)
-       });
-    // getAllData();
-    // getJobTitles();
-    getSpecificTitle();
-}
+            "${employee.address}")`);
+  });
+  // getAllData();
+  // getJobTitles();
+  getSpecificTitle();
+};
 
 // Write a statement to query the database and console.log() all employee records.
 
@@ -66,10 +67,9 @@ const populateData = () => {
 // }
 
 const getSpecificTitle = () => {
-    db.get('select * from employees where jobTitle = "Manager"', (err, data) => {
-        if(err) 
-            console.log(err.toString());
-        console.log("Manager:", data)
-    })
-}
+  db.get('select * from employees where jobTitle = "Manager"', (err, data) => {
+    if (err) console.log(err.toString());
+    console.log('Manager:', data);
+  });
+};
 deleteTable();
